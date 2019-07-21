@@ -10,10 +10,17 @@ import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.model.TvShowModel
 import com.b.moviecataloguemvvm.view.DetailActivity
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.row_item.view.*
 
-class TvShowAdapter(private val context: Context?, private val listTvShows : List<TvShowModel>) : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
+class TvShowAdapter(private val context: Context?) : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
 
+
+    private var listTvShows : List<TvShowModel> = emptyList()
+    fun addList(tvShowModel: List<TvShowModel>){
+        this.listTvShows = tvShowModel
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.row_item, parent,false))
     }
@@ -24,10 +31,11 @@ class TvShowAdapter(private val context: Context?, private val listTvShows : Lis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindViewHolder(listTvShows[position])
-        context?.let { Glide.with(it).load(listTvShows[position].tvShowPoster).into(holder.poster) }
+        val imageID = context?.resources?.getIdentifier(listTvShows[position].tvShowPoster,"drawable", context.packageName)
+        context?.let { Glide.with(it).load(imageID).into(holder.poster) }
         holder.cardItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("tvShowId", listTvShows[position].tvShowId)
+            intent.putExtra("tvShow", Gson().toJson(listTvShows[position]))
             context?.startActivity(intent)
         }
     }

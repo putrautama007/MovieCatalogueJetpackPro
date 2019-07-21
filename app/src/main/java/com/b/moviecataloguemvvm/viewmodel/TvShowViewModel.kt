@@ -1,10 +1,11 @@
 package com.b.moviecataloguemvvm.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.b.moviecataloguemvvm.model.Data
 import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.DataRepository
 
-class TvShowViewModel: ViewModel() {
-    val tvShow : List<TvShowModel> = Data.generateTvShow()
-    fun tvShowDetail (id : Int): TvShowModel? = Data.tvShowDetail(id)
+class TvShowViewModel(dataRepository: DataRepository): ViewModel() {
+    val tvShow : LiveData<List<TvShowModel>> = dataRepository.getTvShowsList()
+
 }

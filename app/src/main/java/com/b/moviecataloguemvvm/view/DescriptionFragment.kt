@@ -7,23 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
 
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.model.MovieModel
 import com.b.moviecataloguemvvm.model.TvShowModel
-import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
 import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import kotlinx.android.synthetic.main.activity_detail.*
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_description.*
 
 class DescriptionFragment : Fragment() {
-
-    private val movieViewModel by lazy {
-        ViewModelProviders.of(this).get(MovieViewModel::class.java)
-    }
 
     private val tvShowViewModel by lazy {
         ViewModelProviders.of(this).get(TvShowViewModel::class.java)
@@ -39,10 +31,12 @@ class DescriptionFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (activity?.intent?.getIntExtra("movieId",0) != 0){
-            loadDataMovie(activity?.intent?.getIntExtra("movieId",0)?.let { movieViewModel.movieDetail(it) })
+        if (activity?.intent?.getStringExtra("movie") != null){
+            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
+                MovieModel::class.java))
         }else{
-            loadDataTvShow(tvShowViewModel.tvShowDetail(activity?.intent?.getIntExtra("tvShowId",0)!!))
+            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
+                TvShowModel::class.java))
         }
 
     }

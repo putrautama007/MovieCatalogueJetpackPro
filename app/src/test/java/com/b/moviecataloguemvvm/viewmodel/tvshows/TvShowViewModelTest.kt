@@ -16,7 +16,7 @@ class TvShowViewModelTest{
     @Before
     fun setUp() {
         viemModel = TvShowViewModel()
-        data =TvShowModel(
+        data = TvShowModel(
             1,
             "Arrow",
             "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",

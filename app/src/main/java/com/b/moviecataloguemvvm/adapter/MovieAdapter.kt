@@ -10,9 +10,16 @@ import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.model.MovieModel
 import com.b.moviecataloguemvvm.view.DetailActivity
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.row_item.view.*
 
-class MovieAdapter(private val context: Context?, private val listMovies : List<MovieModel> ) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+
+    private var listMovies : List<MovieModel> = emptyList()
+    fun addList(movieModel: List<MovieModel>){
+        this.listMovies = movieModel
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.row_item, parent,false))
@@ -24,10 +31,11 @@ class MovieAdapter(private val context: Context?, private val listMovies : List<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindViewHolder(listMovies[position])
-        context?.let { Glide.with(it).load(listMovies[position].moviePoster).into(holder.poster) }
+        val imageID = context?.resources?.getIdentifier(listMovies[position].moviePoster,"drawable", context.packageName)
+        context?.let { Glide.with(it).load(imageID).into(holder.poster) }
         holder.cardItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("movieId", listMovies[position].movieId)
+            intent.putExtra("movie", Gson().toJson(listMovies[position]))
             context?.startActivity(intent)
         }
     }

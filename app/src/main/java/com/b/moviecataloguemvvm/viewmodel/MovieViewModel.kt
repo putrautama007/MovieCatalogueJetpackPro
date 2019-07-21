@@ -1,10 +1,10 @@
 package com.b.moviecataloguemvvm.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.b.moviecataloguemvvm.model.Data
 import com.b.moviecataloguemvvm.model.MovieModel
+import com.b.moviecataloguemvvm.model.repository.DataRepository
 
-class MovieViewModel: ViewModel() {
-    val movies : List<MovieModel> = Data.generateMovies()
-    fun movieDetail (id : Int): MovieModel? = Data.movieDetail(id)
+class MovieViewModel(dataRepository: DataRepository): ViewModel() {
+    val movies : LiveData<List<MovieModel>> = dataRepository.getMovieList()
 }

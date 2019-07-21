@@ -5,21 +5,20 @@ import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.DetailViewPager
 import com.b.moviecataloguemvvm.model.MovieModel
 import com.b.moviecataloguemvvm.model.TvShowModel
-import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
-import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.activity_detail.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.gson.Gson
 
 
 class DetailActivity : AppCompatActivity() {
@@ -29,14 +28,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var collapsingToolbar: CollapsingToolbarLayout
     private lateinit var appBar: AppBarLayout
 
-
-    private val movieViewModel by lazy {
-        ViewModelProviders.of(this).get(MovieViewModel::class.java)
-    }
-
-    private val tvShowViewModel by lazy {
-        ViewModelProviders.of(this).get(TvShowViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +50,13 @@ class DetailActivity : AppCompatActivity() {
         }
 
 
-
-        if (intent.getIntExtra("movieId",0) != 0){
-            loadDataMovie(movieViewModel.movieDetail(intent.getIntExtra("movieId",0)))
+        if (intent.getStringExtra("movie") != null){
+            loadDataMovie(Gson().fromJson(intent.getStringExtra("movie"),
+                MovieModel::class.java))
+            Log.d("data intent", intent.getStringExtra("movie").toString())
         }else{
-            loadDataTvShow(tvShowViewModel.tvShowDetail(intent.getIntExtra("tvShowId",0)))
+            loadDataTvShow(Gson().fromJson(intent.getStringExtra("tvShow"),
+                TvShowModel::class.java))
         }
 
         initViewPager()
@@ -77,8 +70,9 @@ class DetailActivity : AppCompatActivity() {
 
     private fun loadDataMovie(movie : MovieModel?){
         collapsingToolbar.title = movie?.movieTitle
-        Glide.with(this).load(movie?.moviePoster).into(iv_poster_background)
-        Glide.with(this).load(movie?.moviePoster).transform(RoundedCorners(15)).into(iv_poster)
+        val imageID = resources?.getIdentifier(movie?.moviePoster,"drawable", packageName)
+        Glide.with(this).load(imageID).into(iv_poster_background)
+        Glide.with(this).load(imageID).transform(RoundedCorners(15)).into(iv_poster)
         tv_rating_item.text = movie?.movieRating
         tv_release_date.text = movie?.movieRelease
         tv_title.text = movie?.movieTitle
@@ -90,8 +84,9 @@ class DetailActivity : AppCompatActivity() {
 
     private fun loadDataTvShow(tvShow: TvShowModel?){
         collapsingToolbar.title = tvShow?.tvShowTitle
-        Glide.with(this).load(tvShow?.tvShowPoster).into(iv_poster_background)
-        Glide.with(this).load(tvShow?.tvShowPoster).transform(RoundedCorners(15)).into(iv_poster)
+        val imageID = resources?.getIdentifier(tvShow?.tvShowPoster,"drawable", packageName)
+        Glide.with(this).load(imageID).into(iv_poster_background)
+        Glide.with(this).load(imageID).transform(RoundedCorners(15)).into(iv_poster)
         tv_rating_item.text = tvShow?.tvShowRating
         tv_release_date.text = tvShow?.tvShowRelease
         tv_title.text = tvShow?.tvShowTitle

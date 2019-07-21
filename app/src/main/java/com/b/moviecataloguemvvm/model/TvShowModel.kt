@@ -4,7 +4,7 @@ data class TvShowModel(
     val tvShowId: Int?,
     val tvShowTitle: String?,
     val tvShowDescription: String?,
-    val tvShowPoster : Int?,
+    val tvShowPoster : String?,
     val tvShowRelease: String?,
     val tvShowRating : String?,
     val tvShowTrailer : String?,

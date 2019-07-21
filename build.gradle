@@ -41,4 +41,6 @@ ext{
     glideVersion = '4.9.0'
     rulesVersion= '1.2.0'
     legacy = '1.0.0'
+    idlingResourceVersion = '3.2.0'
+    gsonVersion='2.8.5'
 }

@@ -6,34 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.FeaturedCrewAdapter
-import com.b.moviecataloguemvvm.adapter.MovieAdapter
 import com.b.moviecataloguemvvm.model.FeaturedCrew
 import com.b.moviecataloguemvvm.model.MovieModel
 import com.b.moviecataloguemvvm.model.TvShowModel
-import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
-import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_crew.*
-import kotlinx.android.synthetic.main.fragment_description.*
-import kotlinx.android.synthetic.main.fragment_movie.*
 
 
 class CrewFragment : Fragment() {
 
     lateinit var featuredCrewList : List<FeaturedCrew>
-
-    private val movieViewModel by lazy {
-        ViewModelProviders.of(this).get(MovieViewModel::class.java)
-    }
-
-    private val tvShowViewModel by lazy {
-        ViewModelProviders.of(this).get(TvShowViewModel::class.java)
-    }
 
     private val featuredCrewAdapter by lazy {
         FeaturedCrewAdapter(context,featuredCrewList)
@@ -49,10 +35,12 @@ class CrewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (activity?.intent?.getIntExtra("movieId",0) != 0){
-            loadDataMovie(activity?.intent?.getIntExtra("movieId",0)?.let { movieViewModel.movieDetail(it) })
+        if (activity?.intent?.getStringExtra("movie") != null){
+            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
+                MovieModel::class.java))
         }else{
-            loadDataTvShow(tvShowViewModel.tvShowDetail(activity?.intent?.getIntExtra("tvShowId",0)!!))
+            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
+                TvShowModel::class.java))
         }
 
     }

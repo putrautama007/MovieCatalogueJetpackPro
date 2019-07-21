@@ -1,24 +1,27 @@
 package com.b.moviecataloguemvvm.view
 
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
+import com.b.moviecataloguemvvm.BuildConfig
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.DetailViewPager
-import com.b.moviecataloguemvvm.model.MovieModel
-import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
+import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
+import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
+import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
+import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.activity_detail.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.gson.Gson
+import java.text.SimpleDateFormat
 
 
 class DetailActivity : AppCompatActivity() {
@@ -28,6 +31,24 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var collapsingToolbar: CollapsingToolbarLayout
     private lateinit var appBar: AppBarLayout
 
+    private val movieDetailViewModel by lazy {
+        val viewModelFactory= ViewModelFactory.getInstance()
+        ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
+    }
+
+    private val tvShowDetailViewModel by lazy {
+        val viewModelFactory= ViewModelFactory.getInstance()
+        ViewModelProviders.of(this,viewModelFactory).get(TvShowViewModel::class.java)
+    }
+
+
+    private fun dateConverter(date: String): String{
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd")
+        val outputFormat = SimpleDateFormat("dd MMM yyyy")
+        val inputDateStr = date
+        val date = inputFormat.parse(inputDateStr)
+        return outputFormat.format(date)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +72,14 @@ class DetailActivity : AppCompatActivity() {
 
 
         if (intent.getStringExtra("movie") != null){
-            loadDataMovie(Gson().fromJson(intent.getStringExtra("movie"),
-                MovieModel::class.java))
-            Log.d("data intent", intent.getStringExtra("movie").toString())
+            movieDetailViewModel.getMovieDetail(intent.getStringExtra("movie")).observe(this, Observer {
+                loadDataMovie(it)
+            })
         }else{
-            loadDataTvShow(Gson().fromJson(intent.getStringExtra("tvShow"),
-                TvShowModel::class.java))
+            tvShowDetailViewModel.getTvShowDetail(intent.getStringExtra("tvShow")).observe(this, Observer {
+                loadDataTvShow(it)
+            })
+
         }
 
         initViewPager()
@@ -68,31 +91,29 @@ class DetailActivity : AppCompatActivity() {
         detail_tabLayout.setupWithViewPager(itemViewPager)
     }
 
-    private fun loadDataMovie(movie : MovieModel?){
-        collapsingToolbar.title = movie?.movieTitle
-        val imageID = resources?.getIdentifier(movie?.moviePoster,"drawable", packageName)
-        Glide.with(this).load(imageID).into(iv_poster_background)
-        Glide.with(this).load(imageID).transform(RoundedCorners(15)).into(iv_poster)
-        tv_rating_item.text = movie?.movieRating
-        tv_release_date.text = movie?.movieRelease
-        tv_title.text = movie?.movieTitle
+    private fun loadDataMovie(movie : ItemList?){
+        collapsingToolbar.title = movie?.title
+        Glide.with(this).load("${BuildConfig.IMG_URL}w500${movie?.backdrop_path}").into(iv_poster_background)
+        Glide.with(this).load("${BuildConfig.IMG_URL}w500${movie?.posterPath}").transform(RoundedCorners(15)).into(iv_poster)
+        tv_rating_item.text = movie?.vote_average.toString()
+        tv_release_date.text = movie?.release_date?.let { dateConverter(it) }
+        tv_title.text = movie?.title
         btn_trailer.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie?.movieTrailer))
-            startActivity(intent)
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie?.movieTrailer))
+//            startActivity(intent)
         }
     }
 
-    private fun loadDataTvShow(tvShow: TvShowModel?){
-        collapsingToolbar.title = tvShow?.tvShowTitle
-        val imageID = resources?.getIdentifier(tvShow?.tvShowPoster,"drawable", packageName)
-        Glide.with(this).load(imageID).into(iv_poster_background)
-        Glide.with(this).load(imageID).transform(RoundedCorners(15)).into(iv_poster)
-        tv_rating_item.text = tvShow?.tvShowRating
-        tv_release_date.text = tvShow?.tvShowRelease
-        tv_title.text = tvShow?.tvShowTitle
+    private fun loadDataTvShow(tvShow: TvShowsDetail?){
+        collapsingToolbar.title = tvShow?.name
+        Glide.with(this).load("${BuildConfig.IMG_URL}w500${tvShow?.backdrop_path}").into(iv_poster_background)
+        Glide.with(this).load("${BuildConfig.IMG_URL}w500${tvShow?.posterPath}").transform(RoundedCorners(15)).into(iv_poster)
+        tv_rating_item.text = tvShow?.vote_average.toString()
+        tv_release_date.text = tvShow?.first_air_date?.let { dateConverter(it) }
+        tv_title.text = tvShow?.name
         btn_trailer.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(tvShow?.tvShowTrailer))
-            startActivity(intent)
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(tvShow?.tvShowTrailer))
+//            startActivity(intent)
         }
     }
 

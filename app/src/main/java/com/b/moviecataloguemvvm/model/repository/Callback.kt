@@ -1,14 +1,22 @@
 package com.b.moviecataloguemvvm.model.repository
 
-import com.b.moviecataloguemvvm.model.MovieModel
-import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
+import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
 
 
-interface GetMovieListCallback{
-    fun onMovieResponse(movieResponse : List<MovieModel>)
+interface GetMovieCallback{
+    fun onResponse(movieResponse : List<ItemList>)
+    fun onErrorResponse()
+}
+interface GetMovieDetailCallback{
+    fun onResponse(movieResponse : ItemList)
     fun onErrorResponse()
 }
 interface GetTvShowsCallback{
-    fun onMovieResponse(tvShowsResponse : List<TvShowModel>)
+    fun onResponse(tvShowsResponse : List<ItemList>)
+    fun onErrorResponse()
+}
+interface GetTvShowDetailCallback{
+    fun onResponse(tvShowsResponse : TvShowsDetail)
     fun onErrorResponse()
 }

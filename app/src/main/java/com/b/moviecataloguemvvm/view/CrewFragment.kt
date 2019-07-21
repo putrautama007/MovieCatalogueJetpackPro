@@ -35,13 +35,13 @@ class CrewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (activity?.intent?.getStringExtra("movie") != null){
-            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
-                MovieModel::class.java))
-        }else{
-            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
-                TvShowModel::class.java))
-        }
+//        if (activity?.intent?.getStringExtra("movie") != null){
+//            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
+//                MovieModel::class.java))
+//        }else{
+//            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
+//                TvShowModel::class.java))
+//        }
 
     }
 

@@ -21,11 +21,11 @@ class ViewModelFactory(private val dataRepository: DataRepository) : ViewModelPr
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
 
-        fun getInstance(application: Application): ViewModelFactory? {
+        fun getInstance(): ViewModelFactory? {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
                     if (INSTANCE == null) {
-                        INSTANCE = Injection.movieRepository(application)?.let { ViewModelFactory(it) }
+                        INSTANCE = Injection.movieRepository()?.let { ViewModelFactory(it) }
                     }
                 }
             }

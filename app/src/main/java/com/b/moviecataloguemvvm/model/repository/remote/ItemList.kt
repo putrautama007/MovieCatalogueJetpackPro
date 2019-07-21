@@ -2,7 +2,7 @@ package com.b.moviecataloguemvvm.model.repository.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieList(
+data class ItemList(
     @SerializedName("poster_path")
     val posterPath: String?,
 
@@ -28,5 +28,8 @@ data class MovieList(
     val backdrop_path: String?,
 
     @SerializedName("vote_average")
-    val vote_average: Double?
+    val vote_average: Double?,
+
+    @SerializedName("name")
+    val name: String?
 )

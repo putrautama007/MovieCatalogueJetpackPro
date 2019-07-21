@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.MovieAdapter
-import com.b.moviecataloguemvvm.model.MovieModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
 import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_movie.*
@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.fragment_movie.*
 
 class MovieFragment : Fragment() {
 
-    private var movieList = listOf<MovieModel>()
+    private var movie = listOf<ItemList>()
 
     private val movieViewModel by lazy {
-        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance(it) }
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
         ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
     }
 
@@ -40,9 +40,9 @@ class MovieFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val movieAdapter = MovieAdapter(context)
-        movieViewModel.movies.observe(viewLifecycleOwner, Observer {
-            movieList = it
-            movieAdapter.addList(movieList)
+        movieViewModel.movie.observe(viewLifecycleOwner, Observer {
+            movie= it
+            movieAdapter.addList(movie)
         })
 
         rv_movie.apply {

@@ -1,68 +1,69 @@
 package com.b.moviecataloguemvvm.model.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.b.moviecataloguemvvm.model.MovieModel
-import com.b.moviecataloguemvvm.model.TvShowModel
 import com.b.moviecataloguemvvm.model.repository.local.LocalRepository
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.model.repository.remote.RemoteRepository
+import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
 import com.b.moviecataloguemvvm.model.resource.DataSource
 
 open class DataRepository(private val localRepository: LocalRepository, private val remoteRepository: RemoteRepository) :
     DataSource {
-
-    override fun getMovieList(): LiveData<List<MovieModel>> {
-        val movieLists = MutableLiveData<List<MovieModel>>()
-
-        remoteRepository.getMovieList(object : GetMovieListCallback{
-            override fun onMovieResponse(movieResponse: List<MovieModel>) {
-                val movieItems = ArrayList<MovieModel>()
-                for (movie in movieResponse.indices){
-                    val response =  movieResponse[movie]
-                    val movieData = MovieModel(
-                        response.movieId,
-                        response.movieTitle,
-                        response.movieDescription,
-                        response.moviePoster,
-                        response.movieRelease,
-                        response.movieRating,
-                        response.movieTrailer,
-                        response.featuredCrew
-                    )
-                    movieItems.add(movieData)
-                }
-                movieLists.postValue(movieItems)
+    override fun getTvShowsDetail(tvId: String): LiveData<TvShowsDetail> {
+        val tvShowDetail = MutableLiveData<TvShowsDetail>()
+        remoteRepository.getMovieDetail(tvId,object  : GetTvShowDetailCallback{
+            override fun onResponse(tvShowsResponse: TvShowsDetail) {
+                tvShowDetail.postValue(tvShowsResponse)
             }
+
             override fun onErrorResponse() {
                 print("error to get movies")
             }
 
         })
-        return  movieLists
+        return tvShowDetail
+    }
+
+    override fun getMovieDetail(movieId: String): LiveData<ItemList> {
+        val movieDetail = MutableLiveData<ItemList>()
+        remoteRepository.getMovieDetail(movieId,object  : GetMovieDetailCallback{
+            override fun onResponse(movieResponse: ItemList) {
+                movieDetail.postValue(movieResponse)
+            }
+
+            override fun onErrorResponse() {
+                print("error to get movies")
+            }
+
+        })
+        return movieDetail
     }
 
 
-    override fun getTvShowsList(): LiveData<List<TvShowModel>> {
-        val tvShowsLists = MutableLiveData<List<TvShowModel>>()
+    override fun getMovie(): LiveData<List<ItemList>> {
+        val movieLists = MutableLiveData<List<ItemList>>()
+        remoteRepository.getMovie(object  : GetMovieCallback{
+            override fun onResponse(movieResponse: List<ItemList>) {
+                Log.d("movie", movieResponse.toString())
+                movieLists.postValue(movieResponse)
+            }
+
+            override fun onErrorResponse() {
+                print("error to get movies")
+            }
+        })
+        return movieLists
+    }
+
+
+    override fun getTvShowsList(): LiveData<List<ItemList>> {
+        val tvShowsLists = MutableLiveData<List<ItemList>>()
 
         remoteRepository.getTvShowsList(object : GetTvShowsCallback {
-            override fun onMovieResponse(tvShowsResponse: List<TvShowModel>) {
-                val tvShowsItems = ArrayList<TvShowModel>()
-                for (tvShows in tvShowsResponse.indices){
-                    val response =  tvShowsResponse[tvShows]
-                    val tvShowsData = TvShowModel(
-                        response.tvShowId,
-                        response.tvShowTitle,
-                        response.tvShowDescription,
-                        response.tvShowPoster,
-                        response.tvShowRelease,
-                        response.tvShowRating,
-                        response.tvShowTrailer,
-                        response.featuredCrew
-                    )
-                    tvShowsItems.add(tvShowsData)
-                }
-                tvShowsLists.postValue(tvShowsItems)
+            override fun onResponse(tvShowsResponse: List<ItemList>) {
+                tvShowsLists.postValue(tvShowsResponse)
             }
 
             override fun onErrorResponse() {

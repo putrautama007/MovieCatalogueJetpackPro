@@ -6,17 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.b.moviecataloguemvvm.BuildConfig
 import com.b.moviecataloguemvvm.R
-import com.b.moviecataloguemvvm.model.MovieModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.view.DetailActivity
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.row_item.view.*
 
 class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-    private var listMovies : List<MovieModel> = emptyList()
-    fun addList(movieModel: List<MovieModel>){
+    private var listMovies : List<ItemList> = emptyList()
+    fun addList(movieModel: List<ItemList>){
         this.listMovies = movieModel
         notifyDataSetChanged()
     }
@@ -31,11 +31,10 @@ class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAd
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindViewHolder(listMovies[position])
-        val imageID = context?.resources?.getIdentifier(listMovies[position].moviePoster,"drawable", context.packageName)
-        context?.let { Glide.with(it).load(imageID).into(holder.poster) }
+        context?.let { Glide.with(it).load("${BuildConfig.IMG_URL}w500${listMovies[position].posterPath}").into(holder.poster) }
         holder.cardItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("movie", Gson().toJson(listMovies[position]))
+            intent.putExtra("movie", listMovies[position].id.toString())
             context?.startActivity(intent)
         }
     }
@@ -43,8 +42,8 @@ class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAd
     class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
         val poster = itemView.iv_poster
         val cardItem = itemView.cv_item
-        fun bindViewHolder(listMovies : MovieModel){
-            itemView.tv_title.text = listMovies.movieTitle
+        fun bindViewHolder(listMovies : ItemList){
+            itemView.tv_title.text = listMovies.title
         }
     }
 }

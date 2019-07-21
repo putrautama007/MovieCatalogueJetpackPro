@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.b.moviecataloguemvvm.BuildConfig
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.view.DetailActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -16,8 +18,8 @@ import kotlinx.android.synthetic.main.row_item.view.*
 class TvShowAdapter(private val context: Context?) : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
 
 
-    private var listTvShows : List<TvShowModel> = emptyList()
-    fun addList(tvShowModel: List<TvShowModel>){
+    private var listTvShows : List<ItemList> = emptyList()
+    fun addList(tvShowModel: List<ItemList>){
         this.listTvShows = tvShowModel
         notifyDataSetChanged()
     }
@@ -31,11 +33,10 @@ class TvShowAdapter(private val context: Context?) : RecyclerView.Adapter<TvShow
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindViewHolder(listTvShows[position])
-        val imageID = context?.resources?.getIdentifier(listTvShows[position].tvShowPoster,"drawable", context.packageName)
-        context?.let { Glide.with(it).load(imageID).into(holder.poster) }
+        context?.let { Glide.with(it).load("${BuildConfig.IMG_URL}w500${listTvShows[position].posterPath}").into(holder.poster) }
         holder.cardItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("tvShow", Gson().toJson(listTvShows[position]))
+            intent.putExtra("tvShow", listTvShows[position].id.toString())
             context?.startActivity(intent)
         }
     }
@@ -43,8 +44,8 @@ class TvShowAdapter(private val context: Context?) : RecyclerView.Adapter<TvShow
     class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
         val poster = itemView.iv_poster
         val cardItem = itemView.cv_item
-        fun bindViewHolder(listMovies : TvShowModel){
-            itemView.tv_title.text = listMovies.tvShowTitle
+        fun bindViewHolder(listMovies : ItemList){
+            itemView.tv_title.text = listMovies.name
         }
     }
 }

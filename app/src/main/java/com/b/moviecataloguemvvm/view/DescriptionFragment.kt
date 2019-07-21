@@ -6,19 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.b.moviecataloguemvvm.R
-import com.b.moviecataloguemvvm.model.MovieModel
 import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
+import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
+import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
 import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
+import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_description.*
 
 class DescriptionFragment : Fragment() {
 
-    private val tvShowViewModel by lazy {
-        ViewModelProviders.of(this).get(TvShowViewModel::class.java)
+    private val movieDescriptionViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
+        ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
+    }
+
+    private val tvShowDescriptionViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
+        ViewModelProviders.of(this,viewModelFactory).get(TvShowViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -32,21 +42,25 @@ class DescriptionFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (activity?.intent?.getStringExtra("movie") != null){
-            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
-                MovieModel::class.java))
+            movieDescriptionViewModel.getMovieDetail(activity?.intent?.getStringExtra("movie")!!)
+                .observe(viewLifecycleOwner, Observer {
+                    loadDataMovie(it)
+            })
         }else{
-            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
-                TvShowModel::class.java))
+            tvShowDescriptionViewModel.getTvShowDetail(activity?.intent?.getStringExtra("tvShow")!!)
+                .observe(viewLifecycleOwner, Observer {
+                    loadDataTvShow(it)
+                })
         }
 
     }
 
-    private fun loadDataMovie(movie : MovieModel?){
-       tv_description.text = movie?.movieDescription
+    private fun loadDataMovie(movie : ItemList?){
+       tv_description.text = movie?.overview
     }
 
-    private fun loadDataTvShow(tvShow: TvShowModel?){
-        tv_description.text = tvShow?.tvShowDescription
+    private fun loadDataTvShow(tvShow: TvShowsDetail?){
+        tv_description.text = tvShow?.overview
     }
 
 }

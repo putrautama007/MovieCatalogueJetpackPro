@@ -13,16 +13,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.TvShowAdapter
 import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
 import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_tv_show.*
 
 class TvShowFragment : Fragment() {
 
-    private var tvShowList = listOf<TvShowModel>()
+    private var tvShowList = listOf<ItemList>()
 
     private val tvShowViewModel by lazy {
-        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance(it) }
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
         ViewModelProviders.of(this,viewModelFactory).get(TvShowViewModel::class.java)
     }
 

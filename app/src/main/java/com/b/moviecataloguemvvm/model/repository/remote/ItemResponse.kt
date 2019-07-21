@@ -2,6 +2,6 @@ package com.b.moviecataloguemvvm.model.repository.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieResponse(
+data class ItemResponse(
     @SerializedName("results")
-    val results: List<MovieList>? )
+    val results: List<ItemList>? )

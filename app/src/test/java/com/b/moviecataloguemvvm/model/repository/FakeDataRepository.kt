@@ -6,13 +6,13 @@ import com.b.moviecataloguemvvm.model.repository.local.LocalRepository
 import com.b.moviecataloguemvvm.model.repository.remote.*
 import com.b.moviecataloguemvvm.model.resource.DataSource
 
-open class DataRepository(private val localRepository: LocalRepository, private val remoteRepository: RemoteRepositoryJava) :
+open class FakeDataRepository (private val localRepository: LocalRepository, private val remoteRepository: RemoteRepositoryJava) :
     DataSource {
     override fun getMovieCrew(movieId: String): LiveData<List<CrewList>> {
         val movieCrewList = MutableLiveData<List<CrewList>>()
         remoteRepository.getMovieCrew(movieId,object : RemoteRepositoryJava.GetMovieCrewCallback {
             override fun onResponse(movieResponse: List<CrewList>) {
-               movieCrewList.postValue(movieResponse)
+                movieCrewList.postValue(movieResponse)
             }
 
             override fun onErrorResponse() {

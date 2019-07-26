@@ -3,6 +3,7 @@ package com.b.moviecataloguemvvm.view
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -11,6 +12,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 
 import androidx.test.rule.ActivityTestRule
 import com.b.moviecataloguemvvm.R
+import com.b.moviecataloguemvvm.utils.EspressoIdlingResourceJava
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -18,6 +22,16 @@ class HomeActivityTest{
     @Rule
     @JvmField
     var activityRule = ActivityTestRule(HomeActivity::class.java)
+
+    @Before
+    fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResourceJava.getEspressoIdlingResource())
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResourceJava.getEspressoIdlingResource())
+    }
 
     @Test
     fun testAppBehaviour(){

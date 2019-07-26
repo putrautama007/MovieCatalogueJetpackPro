@@ -4,10 +4,6 @@ import android.os.Handler
 import android.util.Log
 import com.b.moviecataloguemvvm.BuildConfig
 import com.b.moviecataloguemvvm.helper.ApiClient
-import com.b.moviecataloguemvvm.model.repository.GetMovieCallback
-import com.b.moviecataloguemvvm.model.repository.GetMovieDetailCallback
-import com.b.moviecataloguemvvm.model.repository.GetTvShowDetailCallback
-import com.b.moviecataloguemvvm.model.repository.GetTvShowsCallback
 import com.b.moviecataloguemvvm.utils.EspressoIdlingResource
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +11,7 @@ import retrofit2.Response
 
 
 open class RemoteRepository {
-    val request = ApiClient.create()
+    private val request = ApiClient.create()
 
 
     fun getMovie(getMovieListCallback: GetMovieCallback){
@@ -92,6 +88,69 @@ open class RemoteRepository {
 
         }, SERVICE_LATENCY_IN_MILLIS
         )
+    }
+
+    fun getMovieCrew(movieId: String,getMovieCrewCallback: GetMovieCrewCallback ){
+        EspressoIdlingResource.increment()
+        val responseHandler = Handler()
+        responseHandler.postDelayed({
+            request.getMovieCrew(movieId,BuildConfig.MOVIE_API).enqueue(object : Callback<CrewResponse>{
+                override fun onFailure(call: Call<CrewResponse>, t: Throwable) {
+                    Log.d("error",t.toString())
+                }
+
+                override fun onResponse(call: Call<CrewResponse>, response: Response<CrewResponse>) {
+                    response.body()?.let { getMovieCrewCallback.onResponse(response.body()?.crew!!) }
+                }
+
+            })
+
+        }, SERVICE_LATENCY_IN_MILLIS
+        )
+    }
+
+    fun getTvShowCrew(tvId: String,getTvShowCrewCallback: GetTvShowCrewCallback ){
+        EspressoIdlingResource.increment()
+        val responseHandler = Handler()
+        responseHandler.postDelayed({
+            request.getMovieCrew(tvId,BuildConfig.MOVIE_API).enqueue(object : Callback<CrewResponse>{
+                override fun onFailure(call: Call<CrewResponse>, t: Throwable) {
+                    Log.d("error",t.toString())
+                }
+
+                override fun onResponse(call: Call<CrewResponse>, response: Response<CrewResponse>) {
+                    response.body()?.let { getTvShowCrewCallback.onResponse(response.body()?.crew!!) }
+                }
+
+            })
+
+        }, SERVICE_LATENCY_IN_MILLIS
+        )
+    }
+
+    interface GetMovieCallback{
+        fun onResponse(movieResponse : List<ItemList>)
+        fun onErrorResponse()
+    }
+    interface GetMovieDetailCallback{
+        fun onResponse(movieResponse : ItemList)
+        fun onErrorResponse()
+    }
+    interface GetTvShowsCallback{
+        fun onResponse(tvShowsResponse : List<ItemList>)
+        fun onErrorResponse()
+    }
+    interface GetTvShowDetailCallback{
+        fun onResponse(tvShowsResponse : TvShowsDetail)
+        fun onErrorResponse()
+    }
+    interface GetMovieCrewCallback{
+        fun onResponse(movieResponse : List<CrewList>)
+        fun onErrorResponse()
+    }
+    interface GetTvShowCrewCallback{
+        fun onResponse(tvShowsResponse : List<CrewList>)
+        fun onErrorResponse()
     }
 
     companion object {

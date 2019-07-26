@@ -1,5 +1,6 @@
 package com.b.moviecataloguemvvm.helper
 
+import com.b.moviecataloguemvvm.model.repository.remote.CrewResponse
 import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.model.repository.remote.ItemResponse
 import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
@@ -26,4 +27,12 @@ interface ApiInterface {
     fun getTvShowDetails(@Path("tv_id") tvId: String? ,
                          @Query("api_key") apiKey: String?
     ) : Call<TvShowsDetail>
+
+    @GET("movie/{movie_id}/credits")
+    fun getMovieCrew(@Path("movie_id") movieId: String? ,
+                     @Query("api_key") apiKey: String?) : Call<CrewResponse>
+
+    @GET("tv/{tv_id}/credits")
+    fun getTvShowCrew(@Path("tv_id") tvId: String? ,
+                      @Query("api_key") apiKey: String?) : Call<CrewResponse>
 }

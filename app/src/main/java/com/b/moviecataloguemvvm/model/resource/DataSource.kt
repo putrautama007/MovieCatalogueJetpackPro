@@ -2,6 +2,7 @@ package com.b.moviecataloguemvvm.model.resource
 
 import androidx.lifecycle.LiveData
 import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.repository.remote.CrewList
 import com.b.moviecataloguemvvm.model.repository.remote.ItemList
 import com.b.moviecataloguemvvm.model.repository.remote.TvShowsDetail
 
@@ -10,4 +11,6 @@ interface DataSource {
     fun getMovieDetail(movieId : String) : LiveData<ItemList>
     fun getTvShowsList(): LiveData<List<ItemList>>
     fun getTvShowsDetail(tvId:String) : LiveData<TvShowsDetail>
+    fun getMovieCrew(movieId: String): LiveData<List<CrewList>>
+    fun getTvShowsCrew(tvId: String): LiveData<List<CrewList>>
 }

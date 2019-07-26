@@ -40,6 +40,7 @@ class TvShowFragment : Fragment() {
 
         val tvShowsAdapter = TvShowAdapter(context)
         tvShowViewModel.tvShow.observe(viewLifecycleOwner, Observer {
+            tv_progress_bar.visibility = View.GONE
             tvShowList = it
             tvShowsAdapter.addList(tvShowList)
         })

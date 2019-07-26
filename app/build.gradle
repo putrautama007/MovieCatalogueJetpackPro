@@ -26,6 +26,10 @@ android {
             debuggable true
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
     buildTypes.each {
         it.buildConfigField 'String', 'MOVIE_API', MovieApiToken
         it.buildConfigField 'String', 'BASE_URL', BASE_URL
@@ -54,6 +58,12 @@ dependencies {
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "androidx.test.espresso:espresso-idling-resource:$idlingResourceVersion"
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-android:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 }

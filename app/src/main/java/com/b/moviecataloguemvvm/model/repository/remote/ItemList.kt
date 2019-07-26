@@ -13,7 +13,7 @@ data class ItemList(
     val release_date: String?,
 
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
 
     @SerializedName("original_title")
     val original_title: String?,

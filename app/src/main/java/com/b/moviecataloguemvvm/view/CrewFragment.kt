@@ -6,24 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.adapter.FeaturedCrewAdapter
-import com.b.moviecataloguemvvm.model.FeaturedCrew
-import com.b.moviecataloguemvvm.model.MovieModel
-import com.b.moviecataloguemvvm.model.TvShowModel
-import com.google.gson.Gson
+import com.b.moviecataloguemvvm.model.repository.remote.CrewList
+import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
+import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
+import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_crew.*
 
 
 class CrewFragment : Fragment() {
 
-    lateinit var featuredCrewList : List<FeaturedCrew>
+    private var featuredCrewList = listOf<CrewList>()
 
-    private val featuredCrewAdapter by lazy {
-        FeaturedCrewAdapter(context,featuredCrewList)
+    private val movieViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
+        ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
     }
+    private val tvShowViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance() }
+        ViewModelProviders.of(this,viewModelFactory).get(TvShowViewModel::class.java)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,32 +42,40 @@ class CrewFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val crewAdapter = FeaturedCrewAdapter(context)
 
-//        if (activity?.intent?.getStringExtra("movie") != null){
-//            loadDataMovie(Gson().fromJson(activity?.intent?.getStringExtra("movie"),
-//                MovieModel::class.java))
-//        }else{
-//            loadDataTvShow(Gson().fromJson(activity?.intent?.getStringExtra("tvShow"),
-//                TvShowModel::class.java))
-//        }
+        if (activity?.intent?.getStringExtra("movie") != null){
+            loadDataMovie(activity?.intent?.getStringExtra("movie")!!,crewAdapter)
+        } else{
+            activity?.intent?.getStringExtra("tvShow")?.let { loadDataTvShow(it,crewAdapter) }
+        }
 
     }
 
-    private fun loadDataMovie(movie : MovieModel?){
-        movie?.featuredCrew?.let { iniRecyclerview(it) }
+    private fun loadDataMovie(movieId:String,crewAdapter: FeaturedCrewAdapter){
+        movieViewModel.getMovieCrew(movieId).observe(viewLifecycleOwner, Observer {
+            featuredCrewList = it
+            crewAdapter.addList(featuredCrewList)
+        })
+            initRecyclerview(crewAdapter)
     }
 
-    private fun loadDataTvShow(tvShow: TvShowModel?){
-        tvShow?.featuredCrew?.let { iniRecyclerview(it) }
+    private fun loadDataTvShow(tvId: String,crewAdapter: FeaturedCrewAdapter){
+        tvShowViewModel.getTvShowCrew(tvId).observe(viewLifecycleOwner, Observer {
+            featuredCrewList = it
+            crewAdapter.addList(featuredCrewList)
+        })
+        initRecyclerview(crewAdapter)
+
     }
 
-    private fun iniRecyclerview(featuredCrew: List<FeaturedCrew>){
+    private fun initRecyclerview(crewAdapter: FeaturedCrewAdapter){
 
-        featuredCrewList = featuredCrew
         rv_feature_crew.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = this@CrewFragment.featuredCrewAdapter
+            adapter = crewAdapter
         }
+
 
     }
 

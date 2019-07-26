@@ -3,6 +3,7 @@ package com.b.moviecataloguemvvm.view
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
@@ -73,10 +74,12 @@ class DetailActivity : AppCompatActivity() {
 
         if (intent.getStringExtra("movie") != null){
             movieDetailViewModel.getMovieDetail(intent.getStringExtra("movie")).observe(this, Observer {
+               initLoading("Loading your movie")
                 loadDataMovie(it)
             })
         }else{
             tvShowDetailViewModel.getTvShowDetail(intent.getStringExtra("tvShow")).observe(this, Observer {
+               initLoading("Loading your tv show")
                 loadDataTvShow(it)
             })
 
@@ -98,10 +101,7 @@ class DetailActivity : AppCompatActivity() {
         tv_rating_item.text = movie?.vote_average.toString()
         tv_release_date.text = movie?.release_date?.let { dateConverter(it) }
         tv_title.text = movie?.title
-        btn_trailer.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie?.movieTrailer))
-//            startActivity(intent)
-        }
+
     }
 
     private fun loadDataTvShow(tvShow: TvShowsDetail?){
@@ -111,11 +111,13 @@ class DetailActivity : AppCompatActivity() {
         tv_rating_item.text = tvShow?.vote_average.toString()
         tv_release_date.text = tvShow?.first_air_date?.let { dateConverter(it) }
         tv_title.text = tvShow?.name
-        btn_trailer.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(tvShow?.tvShowTrailer))
-//            startActivity(intent)
-        }
+
     }
 
+    private fun initLoading(msg: String){
+        detail_progress_bar.visibility = View.GONE
+        coordinatorLayout.visibility = View.VISIBLE
+        tv_loading.visibility = View.GONE
+    }
 
 }

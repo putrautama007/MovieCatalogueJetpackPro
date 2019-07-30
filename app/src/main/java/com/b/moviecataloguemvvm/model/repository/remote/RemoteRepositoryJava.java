@@ -74,6 +74,7 @@ public class RemoteRepositoryJava {
                         @Override
                         public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
                             getMovieListCallback.onResponse(response.body().getResults());
+                            EspressoIdlingResourceJava.decrement();
                         }
 
                         @Override
@@ -81,7 +82,7 @@ public class RemoteRepositoryJava {
                             Log.d("error", t.toString());
                         }
                     });
-                    EspressoIdlingResourceJava.decrement();
+
                 }
                 , SERVICE_LATENCY_IN_MILLIS);
     }
@@ -93,6 +94,7 @@ public class RemoteRepositoryJava {
                 @Override
                 public void onResponse(Call<ItemList> call, Response<ItemList> response) {
                     getMovieDetailCallback.onResponse(response.body());
+                    EspressoIdlingResourceJava.decrement();
                 }
 
                 @Override
@@ -100,7 +102,7 @@ public class RemoteRepositoryJava {
                     Log.d("error", t.toString());
                 }
             });
-            EspressoIdlingResourceJava.decrement();
+
         }, SERVICE_LATENCY_IN_MILLIS);
     }
 
@@ -111,6 +113,7 @@ public class RemoteRepositoryJava {
                 @Override
                 public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
                     getTvShowsCallback.onResponse(response.body().getResults());
+                    EspressoIdlingResourceJava.decrement();
                 }
 
                 @Override
@@ -118,7 +121,7 @@ public class RemoteRepositoryJava {
                     Log.d("error", t.toString());
                 }
             });
-            EspressoIdlingResourceJava.decrement();
+
         }, SERVICE_LATENCY_IN_MILLIS);
     }
 
@@ -129,6 +132,7 @@ public class RemoteRepositoryJava {
                 @Override
                 public void onResponse(Call<TvShowsDetail> call, Response<TvShowsDetail> response) {
                     getTvShowDetailCallback.onResponse(response.body());
+                    EspressoIdlingResourceJava.decrement();
                 }
 
                 @Override
@@ -136,7 +140,7 @@ public class RemoteRepositoryJava {
                     Log.d("error", t.toString());
                 }
             });
-            EspressoIdlingResourceJava.decrement();
+
         }, SERVICE_LATENCY_IN_MILLIS);
     }
 
@@ -147,6 +151,7 @@ public class RemoteRepositoryJava {
                 @Override
                 public void onResponse(Call<CrewResponse> call, Response<CrewResponse> response) {
                     getMovieCrewCallback.onResponse(response.body().getCrew());
+                    EspressoIdlingResourceJava.decrement();
                 }
 
                 @Override
@@ -154,7 +159,7 @@ public class RemoteRepositoryJava {
                     Log.d("error", t.toString());
                 }
             });
-            EspressoIdlingResourceJava.decrement();
+
         }, SERVICE_LATENCY_IN_MILLIS);
     }
 
@@ -165,6 +170,7 @@ public class RemoteRepositoryJava {
                 @Override
                 public void onResponse(Call<CrewResponse> call, Response<CrewResponse> response) {
                     getTvShowCrewCallback.onResponse(response.body().getCrew());
+                    EspressoIdlingResourceJava.decrement();
                 }
 
                 @Override
@@ -172,7 +178,7 @@ public class RemoteRepositoryJava {
                     Log.d("error", t.toString());
                 }
             });
-            EspressoIdlingResourceJava.decrement();
+
         }, SERVICE_LATENCY_IN_MILLIS);
     }
 

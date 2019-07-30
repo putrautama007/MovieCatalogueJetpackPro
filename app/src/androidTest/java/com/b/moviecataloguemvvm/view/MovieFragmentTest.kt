@@ -30,16 +30,13 @@ class MovieFragmentTest {
 
     @After
     fun tearDown() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResourceJava.getEspressoIdlingResource())
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResourceJava.getEspressoIdlingResource())
     }
 
     @Test
     fun getData() {
         onView(withId(R.id.rv_movie))
             .check(matches(isDisplayed()))
-        Thread.sleep(3000)
         onView(withId(R.id.rv_movie)).check(RecyclerViewItemCountAssertion(20))
-
-
     }
 }

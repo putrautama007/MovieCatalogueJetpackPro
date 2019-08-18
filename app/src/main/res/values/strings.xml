@@ -1,15 +1,11 @@
 <resources>
-    <string name="app_name">Movie Catalogue</string>
-    <string name="title_activity_home">HomeActivity</string>
-
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Catalogue Movie</string>
+    <string name="loading_text">Loading your movie or tv show</string>
     <string name="movie">Movie</string>
     <string name="tv_show">TV Show</string>
     <string name="movie_or_tvshow">Movie or Tvshow</string>
-    <string name="release_date">Release Date</string>
-    <string name="title">Title</string>
-    <string name="rating">Rating</string>
     <string name="description">Description</string>
     <string name="crew_name">Crew Name</string>
+    <string name="favorite">Favorite</string>
+    <string name="error">There is an error</string>
 </resources>

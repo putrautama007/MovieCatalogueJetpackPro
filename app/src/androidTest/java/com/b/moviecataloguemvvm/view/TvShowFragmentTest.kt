@@ -1,12 +1,14 @@
 package com.b.moviecataloguemvvm.view
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.testing.SingleFragmentActivity
+import com.b.moviecataloguemvvm.utils.EspressoIdlingResource
 import com.b.moviecataloguemvvm.utils.RecyclerViewItemCountAssertion
 import org.junit.After
 import org.junit.Before
@@ -22,11 +24,14 @@ class TvShowFragmentTest {
 
     @Before
     fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource())
         activityRule.activity.setFragment(tvShowFragment)
+
     }
 
     @After
     fun tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getEspressoIdlingResource())
     }
 
     @Test

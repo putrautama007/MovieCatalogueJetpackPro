@@ -6,27 +6,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.ViewPager
 
 import com.b.moviecataloguemvvm.R
-import com.b.moviecataloguemvvm.model.MovieModel
-import com.b.moviecataloguemvvm.model.TvShowModel
+import com.b.moviecataloguemvvm.model.local.entity.MovieModel
+import com.b.moviecataloguemvvm.model.local.entity.TvShowModel
 import com.b.moviecataloguemvvm.viewmodel.MovieViewModel
 import com.b.moviecataloguemvvm.viewmodel.TvShowViewModel
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import kotlinx.android.synthetic.main.activity_detail.*
+import com.b.moviecataloguemvvm.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_description.*
 
 class DescriptionFragment : Fragment() {
 
-    private val movieViewModel by lazy {
-        ViewModelProviders.of(this).get(MovieViewModel::class.java)
+
+    private val movieDetailViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance(it) }
+        ViewModelProviders.of(this,viewModelFactory).get(MovieViewModel::class.java)
     }
 
-    private val tvShowViewModel by lazy {
-        ViewModelProviders.of(this).get(TvShowViewModel::class.java)
+    private val tvShowDetailViewModel by lazy {
+        val viewModelFactory= activity?.application?.let { ViewModelFactory.getInstance(it) }
+        ViewModelProviders.of(this,viewModelFactory).get(TvShowViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,9 +41,16 @@ class DescriptionFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (activity?.intent?.getIntExtra("movieId",0) != 0){
-            loadDataMovie(activity?.intent?.getIntExtra("movieId",0)?.let { movieViewModel.movieDetail(it) })
+            activity?.intent?.getIntExtra("movieId",0)?.let {
+                movieDetailViewModel.movieDetail(it).observe(this, Observer {
+                    loadDataMovie(it)
+
+                })
+            }
         }else{
-            loadDataTvShow(tvShowViewModel.tvShowDetail(activity?.intent?.getIntExtra("tvShowId",0)!!))
+            tvShowDetailViewModel.tvShowDetail(activity?.intent?.getIntExtra("tvShowId",0)!!).observe(this, Observer {
+                loadDataTvShow(it)
+            })
         }
 
     }

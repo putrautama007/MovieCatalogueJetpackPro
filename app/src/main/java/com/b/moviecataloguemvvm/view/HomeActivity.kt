@@ -12,6 +12,7 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_movie ->loadFragment(MovieFragment())
             R.id.navigation_tv_show -> loadFragment(TvShowFragment())
+            R.id.navigation_favorite -> loadFragment(FavoriteFragment())
         }
         true
     }

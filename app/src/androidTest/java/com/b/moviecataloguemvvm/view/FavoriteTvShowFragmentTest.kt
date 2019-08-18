@@ -1,10 +1,9 @@
 package com.b.moviecataloguemvvm.view
 
-import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import com.b.moviecataloguemvvm.R
 import com.b.moviecataloguemvvm.testing.SingleFragmentActivity
@@ -15,17 +14,16 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class MovieFragmentTest {
-
+class FavoriteTvShowFragmentTest{
     @Rule
     @JvmField
     val activityRule: ActivityTestRule<SingleFragmentActivity> = ActivityTestRule(SingleFragmentActivity::class.java)
-    private val moviesFragment = MovieFragment()
+    private val favoriteTvShowFragment = FavoriteTvShowFragment()
 
     @Before
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource())
-        activityRule.activity.setFragment(moviesFragment)
+        activityRule.activity.setFragment(favoriteTvShowFragment)
     }
 
     @After
@@ -35,8 +33,8 @@ class MovieFragmentTest {
 
     @Test
     fun getData() {
-        onView(withId(R.id.rv_movie))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.rv_movie)).check(RecyclerViewItemCountAssertion(19))
+        Espresso.onView(ViewMatchers.withId(R.id.rv_favorite_tv_show))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.rv_favorite_tv_show)).check(RecyclerViewItemCountAssertion(2))
     }
 }

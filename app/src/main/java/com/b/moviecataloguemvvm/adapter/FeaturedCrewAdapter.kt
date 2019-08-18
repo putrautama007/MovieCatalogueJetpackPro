@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b.moviecataloguemvvm.R
-import com.b.moviecataloguemvvm.model.FeaturedCrew
+import com.b.moviecataloguemvvm.model.local.entity.FeaturedCrew
 import kotlinx.android.synthetic.main.row_featured_crew.view.*
 
 class FeaturedCrewAdapter(private  val context: Context?, private val listMovies : List<FeaturedCrew>): RecyclerView.Adapter<FeaturedCrewAdapter.ViewHolder>() {

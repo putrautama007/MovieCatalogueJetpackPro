@@ -13,7 +13,7 @@ object Injection {
         val localRepository = LocalRepository(
             CatalogueDatabase.getInstance(application).catalogueDao()
         )
-        val remoteRepository = com.b.moviecataloguemvvm.model.remote.RemoteRepositoryJava.getInstance(
+        val remoteRepository = RemoteRepositoryJava.getInstance(
             Helper(
                 application
             )

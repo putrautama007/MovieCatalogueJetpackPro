@@ -21,7 +21,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val executo
 
     protected abstract fun saveCallResult(data: RequestType)
 
-    protected fun fetchFromNetwork(dbSource: LiveData<ResultType>){
+    private fun fetchFromNetwork(dbSource: LiveData<ResultType>){
         val apiResponse = createCall()
 
         result.addSource(dbSource){

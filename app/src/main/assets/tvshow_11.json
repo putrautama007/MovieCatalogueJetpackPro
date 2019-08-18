@@ -1,0 +1,15 @@
+{
+  "tvShowId": 11,
+  "tvShowTitle": "Marvel's Iron Fist",
+  "tvShowDescription": "Danny Rand resurfaces 15 years after being presumed dead. Now, with the power of the Iron Fist, he seeks to reclaim his past and fulfill his destiny.",
+  "tvShowPoster": "tvshow_iron_fist",
+  "tvShowRelease": "March 17, 2017",
+  "tvShowRating": "61",
+  "tvShowTrailer": "https://youtu.be/QCSPda7xQ3s",
+  "featuredCrew": [
+    {
+      "crewName": "Scott Buck",
+      "crewPosition": "Creator"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "movieId": 8,
+  "movieTitle": "Glass",
+  "movieDescription": "In a series of escalating encounters, former security guard David Dunn uses his supernatural abilities to track Kevin Wendell Crumb, a disturbed man who has twenty-four personalities. Meanwhile, the shadowy presence of Elijah Price emerges as an orchestrator who holds secrets critical to both men.",
+  "moviePoster": "movie_glass",
+  "movieRelease": "January 16, 2019",
+  "movieRating": "65",
+  "movieTrailer": "https://youtu.be/95ghQs5AmNk",
+  "featuredCrew": [
+    {
+      "crewName": "M. Night Shyamalan",
+      "crewPosition": "Director, Screenplay"
+    }
+  ]
+}

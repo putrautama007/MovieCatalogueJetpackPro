@@ -1,0 +1,15 @@
+{
+  "tvShowId": 2,
+  "tvShowTitle": "Doom Patrol",
+  "tvShowDescription": "The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.",
+  "tvShowPoster": "tvshow_doom_patrol",
+  "tvShowRelease": "February 15, 2019",
+  "tvShowRating": "61",
+  "tvShowTrailer": "https://youtu.be/6wtGnnLfTqA",
+  "featuredCrew": [
+    {
+      "crewName": "Jeremy Carver",
+      "crewPosition": "Creator"
+    }
+  ]
+}

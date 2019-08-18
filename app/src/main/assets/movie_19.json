@@ -1,0 +1,15 @@
+{
+  "movieId" : 19,
+  "movieTitle": "T-34",
+  "movieDescription": "In 1944, a courageous group of Russian soldiers managed to escape from German captivity in a half-destroyed legendary T-34 tank. Those were the times of unforgettable bravery, fierce fighting, unbreakable love, and legendary miracles.",
+  "moviePoster" : "movie_t34",
+  "movieRelease": "December 27, 2018",
+  "movieRating" : "49",
+  "movieTrailer" : "https://youtu.be/Qm_5TYbxgpc",
+  "featuredCrew": [
+    {
+      "crewName" : "Aleksey Sidorov",
+      "crewPosition" : "Director, Screenplay"
+    }
+  ]
+}

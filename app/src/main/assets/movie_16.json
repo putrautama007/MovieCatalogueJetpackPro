@@ -1,0 +1,23 @@
+{
+  "movieId" : 16,
+  "movieTitle": "Robin Hood",
+  "movieDescription": "A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt English crown.",
+  "moviePoster" : "movie_robin_hood",
+  "movieRelease": "November 20, 2018",
+  "movieRating" : "58",
+  "movieTrailer" : "https://youtu.be/tJfDBSWYqU8",
+  "featuredCrew": [
+    {
+      "crewName" : "Ben Chandler",
+      "crewPosition" : "Screenplay, Story"
+    },
+    {
+      "crewName" : "Otto Bathurst",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "David James Kelly",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

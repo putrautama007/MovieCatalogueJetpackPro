@@ -1,0 +1,15 @@
+{
+  "movieId" : 17,
+  "movieTitle": "Serenity",
+  "movieDescription": "Baker Dill is a fishing boat captain leading tours off a tranquil, tropical enclave called Plymouth Island. His quiet life is shattered, however, when his ex-wife Karen tracks him down with a desperate plea for help.",
+  "moviePoster" : "movie_serenity",
+  "movieRelease": "January 24, 2019",
+  "movieRating" : "51",
+  "movieTrailer" : "https://youtu.be/k3zMlsEK8xA",
+  "featuredCrew": [
+    {
+      "crewName" : "Steven Knight",
+      "crewPosition" : "Director, Screenplay"
+    }
+  ]
+}

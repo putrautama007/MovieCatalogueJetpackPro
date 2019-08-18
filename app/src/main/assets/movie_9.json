@@ -1,0 +1,19 @@
+{
+  "movieId" : 9,
+  "movieTitle": "How to Train Your Dragon: The Hidden World",
+  "movieDescription": "As Hiccup fulfills his dream of creating a peaceful dragon utopia, Toothless’ discovery of an untamed, elusive mate draws the Night Fury away. When danger mounts at home and Hiccup’s reign as village chief is tested, both dragon and rider must make impossible decisions to save their kind.",
+  "moviePoster" : "movie_how_to_train",
+  "movieRelease": "January 3, 2019",
+  "movieRating" : "76",
+  "movieTrailer" : "https://youtu.be/qNGLuCijKZ0",
+  "featuredCrew": [
+    {
+      "crewName" : "Dean DeBlois",
+      "crewPosition" : "Director, Screenplay, Story"
+    },
+    {
+      "crewName" : "Cressida Cowell",
+      "crewPosition" : "Novel"
+    }
+  ]
+}

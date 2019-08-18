@@ -1,0 +1,23 @@
+{
+  "movieId" : 6,
+  "movieTitle": "Creed",
+  "movieDescription": "The former World Heavyweight Champion Rocky Balboa serves as a trainer and mentor to Adonis Johnson, the son of his late friend and former rival Apollo Creed.",
+  "moviePoster" : "movie_creed",
+  "movieRelease": "November 25, 2015",
+  "movieRating" : "73",
+  "movieTrailer" : "https://youtu.be/Uv554B7YHk4",
+  "featuredCrew": [
+    {
+      "crewName" : "Ryan Coogler",
+      "crewPosition" : "Director, Screenplay, Story"
+    },
+    {
+      "crewName" : "Sylvester Stallone",
+      "crewPosition" : "Characters"
+    },
+    {
+      "crewName" : "Aaron Covington",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

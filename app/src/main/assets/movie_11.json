@@ -1,0 +1,19 @@
+{
+  "movieId" : 11,
+  "movieTitle": "Mary Queen of Scots",
+  "movieDescription": "In 1561, Mary Stuart, widow of the King of France, returns to Scotland, reclaims her rightful throne and menaces the future of Queen Elizabeth I as ruler of England, because she has a legitimate claim to the English throne. Betrayals, rebellions, conspiracies and their own life choices imperil both Queens. They experience the bitter cost of power, until their tragic fate is finally fulfilled.",
+  "moviePoster" : "movie_marry_queen",
+  "movieRelease": "December 7, 2018",
+  "movieRating" : "66",
+  "movieTrailer" : "https://youtu.be/wnqjSgMU36U",
+  "featuredCrew": [
+    {
+      "crewName" : "Josie Rourke",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Beau Willimon",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

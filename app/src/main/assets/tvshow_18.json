@@ -1,0 +1,15 @@
+{
+  "tvShowId": 18,
+  "tvShowTitle": "The Simpsons",
+  "tvShowDescription": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
+  "tvShowPoster": "tvshow_the_simpson",
+  "tvShowRelease": "December 17, 1989",
+  "tvShowRating": "71",
+  "tvShowTrailer": "https://youtu.be/DX1iplQQJTo",
+  "featuredCrew": [
+    {
+      "crewName": "Matt Groening",
+      "crewPosition": "Creator"
+    }
+  ]
+}

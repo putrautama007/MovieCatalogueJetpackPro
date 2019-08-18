@@ -1,0 +1,23 @@
+{
+  "tvShowId": 1,
+  "tvShowTitle": "Arrow",
+  "tvShowDescription": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+  "tvShowPoster": "tvshow_arrow",
+  "tvShowRelease": "October 10, 2012",
+  "tvShowRating": "58",
+  "tvShowTrailer": "https://youtu.be/hTv13EjlLNg",
+  "featuredCrew": [
+    {
+      "crewName": "Greg Berlant",
+      "crewPosition": "Creator"
+    },
+    {
+      "crewName": "Marc Guggenheim",
+      "crewPosition": "Creator"
+    },
+    {
+      "crewName": "Andrew Kreisberg",
+      "crewPosition": "Creator"
+    }
+  ]
+}

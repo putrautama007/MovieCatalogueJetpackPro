@@ -1,0 +1,19 @@
+{
+  "tvShowId": 13,
+  "tvShowTitle": "NCIS",
+  "tvShowDescription": "From murder and espionage to terrorism and stolen submarines, a team of special agents investigates any crime that has a shred of evidence connected to Navy and Marine Corps personnel, regardless of rank or position.",
+  "tvShowPoster": "tvshow_ncis",
+  "tvShowRelease": "September 23, 2003",
+  "tvShowRating": "67",
+  "tvShowTrailer": "https://youtu.be/VzSsxINwIVE",
+  "featuredCrew": [
+    {
+      "crewName": "Don McGill",
+      "crewPosition": "Creator"
+    },
+    {
+      "crewName": "Donald P. Bellisario",
+      "crewPosition": "Creator"
+    }
+  ]
+}

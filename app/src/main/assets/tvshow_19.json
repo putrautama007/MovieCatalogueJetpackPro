@@ -1,0 +1,15 @@
+{
+  "tvShowId": 19,
+  "tvShowTitle": "The Umbrella Academy",
+  "tvShowDescription": "A dysfunctional family of superheroes comes together to solve the mystery of their father's death, the threat of the apocalypse and more.",
+  "tvShowPoster": "tvshow_the_umbrella",
+  "tvShowRelease": "February 15, 2019",
+  "tvShowRating": "77",
+  "tvShowTrailer": "https://youtu.be/0DAmWHxeoKw",
+  "featuredCrew": [
+    {
+      "crewName": "Steve Blackman",
+      "crewPosition": "Creator"
+    }
+  ]
+}

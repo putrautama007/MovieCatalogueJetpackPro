@@ -1,0 +1,15 @@
+{
+  "tvShowId": 9,
+  "tvShowTitle": "Grey's Anatomy",
+  "tvShowDescription": "ollows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital.",
+  "tvShowPoster": "tvshow_grey_anatomy",
+  "tvShowRelease": "March 27, 2005",
+  "tvShowRating": "62",
+  "tvShowTrailer": "https://youtu.be/q1pcpgREQ5c",
+  "featuredCrew": [
+    {
+      "crewName": "Shonda Rhimes",
+      "crewPosition": "Creator"
+    }
+  ]
+}

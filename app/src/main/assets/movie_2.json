@@ -1,0 +1,23 @@
+{
+  "movieId" : 2,
+  "movieTitle": "Alita: Battle Angel",
+  "movieDescription": "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+  "moviePoster" : "movie_alita",
+  "movieRelease": "January 31, 2019",
+  "movieRating" : "67",
+  "movieTrailer" : "https://youtu.be/aj8mN_7Apcw",
+  "featuredCrew": [
+    {
+      "crewName" : "Robert Rodriguez",
+      "crewPosition" : "Director,"
+    },
+    {
+      "crewName" : "Laeta Kalogridis",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "James Cameron",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

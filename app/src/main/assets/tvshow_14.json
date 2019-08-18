@@ -1,0 +1,15 @@
+{
+  "tvShowId": 14,
+  "tvShowTitle": "Riverdale",
+  "tvShowDescription": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
+  "tvShowPoster": "tvshow_riverdale",
+  "tvShowRelease": "January 26, 2017",
+  "tvShowRating": "69",
+  "tvShowTrailer": "https://youtu.be/9XmFTADupMc",
+  "featuredCrew": [
+    {
+      "crewName": "Roberto Aguirre-Sacasa",
+      "crewPosition": "Creator"
+    }
+  ]
+}

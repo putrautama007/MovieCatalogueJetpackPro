@@ -1,0 +1,31 @@
+{
+  "movieId" : 1,
+  "movieTitle": "A Star Is Born",
+  "movieDescription": "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
+  "moviePoster" : "movie_a_start_is_born",
+  "movieRelease": "October 3, 2018",
+  "movieRating" : "75",
+  "movieTrailer" : "https://youtu.be/nSbzyEJ8X9E",
+  "featuredCrew": [
+    {
+      "crewName" : "Bradley Cooper",
+      "crewPosition" : "Director, Screenplay"
+    },
+    {
+      "crewName" : "Will Fetters",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "Eric Roth",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "Robert Carson",
+      "crewPosition" : "Story"
+    },
+    {
+      "crewName" : "William A. Wellman",
+      "crewPosition" : "Story"
+    }
+  ]
+},

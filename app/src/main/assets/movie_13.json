@@ -1,0 +1,31 @@
+{
+  "movieId" : 13,
+  "movieTitle": "Mortal Engines",
+  "movieDescription": "Many thousands of years in the future, Earth’s cities roam the globe on huge wheels, devouring each other in a struggle for ever diminishing resources. On one of these massive traction cities, the old London, Tom Natsworthy has an unexpected encounter with a mysterious young woman from the wastelands who will change the course of his life forever.",
+  "moviePoster" : "movie_mortal_engines",
+  "movieRelease": "November 27, 2018",
+  "movieRating" : "60",
+  "movieTrailer" : "https://youtu.be/IRsFc2gguEg",
+  "featuredCrew": [
+    {
+      "crewName" : "Christian Rivers",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Philip Reeve",
+      "crewPosition" : "Novel"
+    },
+    {
+      "crewName" : "Philippa Boyens",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "Fran Walsh",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "Peter Jackson",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

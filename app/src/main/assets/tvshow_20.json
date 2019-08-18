@@ -1,0 +1,15 @@
+{
+  "tvShowId": 20,
+  "tvShowTitle": "The Walking Dead",
+  "tvShowDescription": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
+  "tvShowPoster": "tvshow_the_walking_dead",
+  "tvShowRelease": "October 31, 2010",
+  "tvShowRating": "73",
+  "tvShowTrailer": "https://youtu.be/R1v0uFms68U",
+  "featuredCrew": [
+    {
+      "crewName": "Frank Darabont",
+      "crewPosition": "Creator"
+    }
+  ]
+}

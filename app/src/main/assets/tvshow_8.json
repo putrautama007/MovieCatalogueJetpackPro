@@ -1,0 +1,15 @@
+{
+  "tvShowId": 8,
+  "tvShowTitle": "Gotham",
+  "tvShowDescription": "Before there was Batman, there was GOTHAM. Everyone knows the name Commissioner Gordon. He is one of the crime world's greatest foes, a man whose reputation is synonymous with law and order. But what is known of Gordon's story and his rise from rookie detective to Police Commissioner? What did it take to navigate the multiple layers of corruption that secretly ruled Gotham City, the spawning ground of the world's most iconic villains? And what circumstances created them – the larger-than-life personas who would become Catwoman, The Penguin, The Riddler, Two-Face and The Joker?",
+  "tvShowPoster": "tvshow_gotham",
+  "tvShowRelease": "September 22, 2014",
+  "tvShowRating": "69",
+  "tvShowTrailer": "https://youtu.be/0d1zpt6k5OI",
+  "featuredCrew": [
+    {
+      "crewName": "Bruno Heller",
+      "crewPosition": "Creator"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+      "tvShowId": 4,
+      "tvShowTitle": "Fairy Tail",
+      "tvShowDescription": "Lucy is a 17-year-old girl, who wants to be a full-fledged mage. One day when visiting Harujion Town, she meets Natsu, a young man who gets sick easily by any type of transportation. But Natsu isn't just any ordinary kid, he's a member of one of the world's most infamous mage guilds: Fairy Tail.",
+      "tvShowPoster": "tvshow_fairytail",
+      "tvShowRelease": "October 12, 2009",
+      "tvShowRating": "64",
+      "tvShowTrailer": "https://youtu.be/29jsKEZN1ag",
+      "featuredCrew": [
+            {
+                  "crewName": "",
+                  "crewPosition": ""
+            }
+      ]
+}

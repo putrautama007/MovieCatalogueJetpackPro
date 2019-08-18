@@ -1,0 +1,19 @@
+{
+  "tvShowId": 7,
+  "tvShowTitle": "Game of Thrones",
+  "tvShowDescription": "leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+  "tvShowPoster": "tvshow_god",
+  "tvShowRelease": "April 17, 2011",
+  "tvShowRating": "81",
+  "tvShowTrailer": "https://youtu.be/BpJYNVhGf1s",
+  "featuredCrew": [
+    {
+      "crewName": "David Benioff",
+      "crewPosition": "Creator"
+    },
+    {
+      "crewName": "D. B. Weiss",
+      "crewPosition": "Creator"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "movieId" : 14,
+  "movieTitle": "Overlord",
+  "movieDescription": "France, June 1944. On the eve of D-Day, some American paratroopers fall behind enemy lines after their aircraft crashes while on a mission to destroy a radio tower in a small village near the beaches of Normandy. After reaching their target, the surviving paratroopers realise that, in addition to fighting the Nazi troops that patrol the village, they also must fight against something else.",
+  "moviePoster" : "movie_overlord",
+  "movieRelease": "November 1, 2018",
+  "movieRating" : "66",
+  "movieTrailer" : "https://youtu.be/USPd0vX2sdc",
+  "featuredCrew": [
+    {
+      "crewName" : "Billy Ray",
+      "crewPosition" : "Screenplay, Story"
+    },
+    {
+      "crewName" : "Julius Avery",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Mark L. Smith",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

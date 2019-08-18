@@ -1,0 +1,23 @@
+{
+  "movieId" : 12,
+  "movieTitle": "Master Z: Ip Man Legacy",
+  "movieDescription": "After being defeated by Ip Man, Cheung Tin Chi is attempting to keep a low profile. While going about his business, he gets into a fight with a foreigner by the name of Davidson, who is a big boss behind the bar district. Tin Chi fights hard with Wing Chun and earns respect.",
+  "moviePoster" : "movie_master_z",
+  "movieRelease": "December 20, 2018",
+  "movieRating" : "52",
+  "movieTrailer" : "https://youtu.be/of1IKuYgj-c",
+  "featuredCrew": [
+    {
+      "crewName" : "Yuen Woo-ping",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Chan Tai-Li",
+      "crewPosition" : "Screenplay"
+    },
+    {
+      "crewName" : "Edmond Wong",
+      "crewPosition" : "Screenplay"
+    }
+  ]
+}

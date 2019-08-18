@@ -1,0 +1,15 @@
+{
+  "tvShowId": 15,
+  "tvShowTitle": "Shameless",
+  "tvShowDescription": "Chicagoan Frank Gallagher is the proud single dad of six smart, industrious, independent kids, who without him would be... perhaps better off. When Frank's not at the bar spending what little money they have, he's passed out on the floor. But the kids have found ways to grow up in spite of him. They may not be like any family you know, but they make no apologies for being exactly who they are.",
+  "tvShowPoster": "tvshow_shameless",
+  "tvShowRelease": "January 9, 2011",
+  "tvShowRating": "78",
+  "tvShowTrailer": "https://youtu.be/CHstRRD_8LE",
+  "featuredCrew": [
+    {
+      "crewName": "Paul Abbott",
+      "crewPosition": "Creator"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "movieId" : 4,
+  "movieTitle": "Bohemian Rhapsody",
+  "movieDescription": "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John Deacon take the music world by storm when they form the rock 'n' roll band Queen in 1970. Hit songs become instant classics. When Mercury's increasingly wild lifestyle starts to spiral out of control, Queen soon faces its greatest challenge yet – finding a way to keep the band together amid the success and excess.",
+  "moviePoster" : "movie_bohemian",
+  "movieRelease": "October 24, 2018",
+  "movieRating" : "81",
+  "movieTrailer" : "https://youtu.be/HlRd9Zy25zo",
+  "featuredCrew": [
+    {
+      "crewName" : "Anthony McCarten",
+      "crewPosition" : "Screenplay, Story"
+    },
+    {
+      "crewName" : "Bryan Singer",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Dexter Fletcher",
+      "crewPosition" : "Director"
+    },
+    {
+      "crewName" : "Peter Morgan",
+      "crewPosition" : "Story"
+    }
+  ]
+}

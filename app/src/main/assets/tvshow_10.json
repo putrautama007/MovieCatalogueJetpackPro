@@ -1,0 +1,15 @@
+{
+  "tvShowId": 10,
+  "tvShowTitle": "Hanna",
+  "tvShowDescription": "This thriller and coming-of-age drama follows the journey of an extraordinary young girl as she evades the relentless pursuit of an off-book CIA agent and tries to unearth the truth behind who she is. Based on the 2011 Joe Wright film.",
+  "tvShowPoster": "tvshow_hanna",
+  "tvShowRelease": "March 28, 2019",
+  "tvShowRating": "64",
+  "tvShowTrailer": "https://youtu.be/wp6myRLnhAs",
+  "featuredCrew": [
+    {
+      "crewName": "David Farr",
+      "crewPosition": "Creator"
+    }
+  ]
+}

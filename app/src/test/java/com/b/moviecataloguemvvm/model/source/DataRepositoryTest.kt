@@ -30,11 +30,11 @@ class DataRepositoryTest {
 
     private val movieList = FakeDummy.generateRemoteMovies()
     private val movieId = movieList[0].movieId
-    private val movieData = movieId?.let { FakeDummy.getRemoteMovieById(it) }
+    private val movieData = movieId.let { FakeDummy.getRemoteMovieById(it) }
 
     private val tvShowList = FakeDummy.generateRemoteTvShow()
     private val tvShowId = tvShowList[0].tvShowId
-    private val tvShowData = tvShowId?.let { FakeDummy.getRemoteTvShowById(it) }
+    private val tvShowData = tvShowId.let { FakeDummy.getRemoteTvShowById(it) }
 
 
     @Before

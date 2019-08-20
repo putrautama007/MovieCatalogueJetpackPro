@@ -65,6 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     <ImageView
+                            android:contentDescription="@string/image_background"
                             android:id="@+id/iv_poster_background"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
@@ -94,6 +95,7 @@
                             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
 
                     <ImageView
+                            android:contentDescription="@string/image_poster"
                             android:scaleType="fitXY"
                             android:id="@+id/iv_poster"
                             android:layout_width="100dp"

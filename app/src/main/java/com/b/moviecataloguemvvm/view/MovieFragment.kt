@@ -57,13 +57,13 @@ class MovieFragment : Fragment() {
     }
 
     private fun getMovies() {
-        movieViewModel?.getMovies?.observe(viewLifecycleOwner, Observer {
+        movieViewModel.getMovies.observe(viewLifecycleOwner, Observer {
 
             when (it.status) {
                 SUCCESS -> {
                     movie_progress_bar.visibility = View.GONE
                     if (it.data.isNullOrEmpty()) {
-                        movieViewModel?.insertMovies(movieList)
+                        movieViewModel.insertMovies(movieList)
                     }
                 }
                 ERROR -> {

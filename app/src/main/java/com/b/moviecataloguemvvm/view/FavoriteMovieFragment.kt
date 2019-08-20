@@ -37,7 +37,7 @@ class FavoriteMovieFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val movieAdapter = FavoriteMovieAdapter(context)
-        movieViewModel?.getMoviesPaged?.observe(viewLifecycleOwner, Observer { response ->
+        movieViewModel.getMoviesPaged.observe(viewLifecycleOwner, Observer { response ->
 
             if (response != null) {
                 when (response.status) {

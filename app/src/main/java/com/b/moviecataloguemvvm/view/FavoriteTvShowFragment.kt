@@ -35,13 +35,13 @@ class FavoriteTvShowFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val tvShowsAdapter = FavoriteTvShowAdapter(context)
-        tvShowViewModel?.getTvShowPaged?.observe(viewLifecycleOwner, Observer { response ->
+        tvShowViewModel.getTvShowPaged.observe(viewLifecycleOwner, Observer { response ->
 
             if (response != null) {
                 when (response.status) {
-                   LOADING -> {
+                    LOADING -> {
 
-                   }
+                    }
                     SUCCESS -> {
                         favorite_tv_progress_bar.visibility = View.GONE
                         tvShowsAdapter.submitList(response.data)

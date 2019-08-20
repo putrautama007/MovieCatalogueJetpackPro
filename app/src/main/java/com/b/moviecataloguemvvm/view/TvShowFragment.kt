@@ -53,13 +53,13 @@ class TvShowFragment : Fragment() {
     }
 
     private fun getTvShows() {
-        tvShowViewModel?.getTvShows?.observe(viewLifecycleOwner, Observer {
+        tvShowViewModel.getTvShows.observe(viewLifecycleOwner, Observer {
 
             when (it.status) {
                 SUCCESS -> {
                     tv_progress_bar.visibility = View.GONE
                     if (it.data.isNullOrEmpty()) {
-                        tvShowViewModel?.insertTvShows(tvShowList)
+                        tvShowViewModel.insertTvShows(tvShowList)
                     }
                 }
                 ERROR -> {

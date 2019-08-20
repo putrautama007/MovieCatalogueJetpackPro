@@ -8,4 +8,6 @@
     <string name="crew_name">Crew Name</string>
     <string name="favorite">Favorite</string>
     <string name="error">There is an error</string>
+    <string name="image_background">Image Background</string>
+    <string name="image_poster">Image Poster</string>
 </resources>
